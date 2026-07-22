@@ -1,6 +1,13 @@
 @if (!quizFinished) {
   <div>
-    <h3 style="color: #666; margin-top: 0;">Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}</h3>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+      <h3 style="color: #666; margin: 0;">Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}</h3>
+      <!-- Visual Timer Indicator -->
+      <span style="font-size: 1.1rem; font-weight: bold; padding: 4px 10px; border-radius: 20px; background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba;">
+        ⏱️ Time Left: {{ timeLeft }}s
+      </span>
+    </div>
+
     <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 20px;">{{ questions[currentQuestionIndex]?.title }}</p>
 
     <form>
