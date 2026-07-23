@@ -1,13 +1,22 @@
 <div style="max-width: 600px; margin: 40px auto; font-family: sans-serif; padding: 20px; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
   
-  <nav style="display: flex; justify-content: space-between; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 20px;">
+  <nav style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 20px;">
     <h2 style="margin: 0; color: #333;">Simple Quiz App</h2>
-    <button style="padding: 6px 12px; cursor: pointer; background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px;" (click)="toggleMode()">
-      Switch to {{ isAdminMode ? 'Quiz View' : 'Admin Panel' }}
-    </button>
+    
+    <div>
+      <button style="padding: 6px 12px; cursor: pointer; background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; margin-right: 8px;" (click)="toggleMode()">
+        {{ isAdminMode ? 'Switch to Quiz View' : 'Admin Panel' }}
+      </button>
+
+      @if (quizService.isAdminLoggedIn) {
+        <button style="padding: 6px 12px; cursor: pointer; background: #dc3545; color: white; border: none; border-radius: 4px;" (click)="handleLogout()">
+          Logout
+        </button>
+      }
+    </div>
   </nav>
 
-  @if (isAdminMode) {
+  @if (isAdminMode && quizService.isAdminLoggedIn) {
     <app-admin [questions]="questions" (refreshRequested)="refreshData()"></app-admin>
   } @else {
     <app-quiz [questions]="questions"></app-quiz>
