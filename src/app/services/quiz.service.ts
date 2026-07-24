@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface Question {
   id?: number;
@@ -14,7 +15,7 @@ export interface Question {
 })
 export class QuizService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:8000/api/quiz';
+  private apiUrl = `${environment.apiUrl}/api/quiz`;
 
   // Auth State
   private authToken: string | null = null;

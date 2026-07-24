@@ -43,3 +43,6 @@ Thumbs.db
 
 # Docker file
 Dockerfile
+
+# Nginx config file
+nginx.conf
